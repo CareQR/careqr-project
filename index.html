@@ -1,22 +1,95 @@
-<body style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
-    <h1>CareQR – Formularz danych SOS</h1>
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <title>CareQR – Formularz SOS / Notfallformular / Emergency Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    .lang-switch {
+      text-align: right;
+    }
+    .lang-switch button {
+      margin-left: 5px;
+      padding: 5px 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="lang-switch">
+    <span>Wybierz język / Sprache wählen / Choose language:</span>
+    <button onclick="setLanguage('pl')">PL</button>
+    <button onclick="setLanguage('de')">DE</button>
+    <button onclick="setLanguage('en')">EN</button>
+  </div>
 
-    <form>
-        <label for="name">Imię i nazwisko seniora:</label><br>
-        <input type="text" id="name" name="name" required><br><br>
+  <h1 id="title">CareQR – Formularz danych SOS</h1>
 
-        <label for="phone1">Numer alarmowy 1:</label><br>
-        <input type="tel" id="phone1" name="phone1" required><br><br>
+  <form>
+    <label for="name" id="label-name">Imię i nazwisko seniora:</label><br>
+    <input type="text" id="name" name="name" required><br><br>
 
-        <label for="phone2">Numer alarmowy 2:</label><br>
-        <input type="tel" id="phone2" name="phone2"><br><br>
+    <label for="phone1" id="label-phone1">Numer alarmowy 1:</label><br>
+    <input type="tel" id="phone1" name="phone1" required><br><br>
 
-        <label for="phone3">Numer alarmowy 3:</label><br>
-        <input type="tel" id="phone3" name="phone3"><br><br>
+    <label for="phone2" id="label-phone2">Numer alarmowy 2:</label><br>
+    <input type="tel" id="phone2" name="phone2"><br><br>
 
-        <label for="meds">Lista przyjmowanych leków:</label><br>
-        <textarea id="meds" name="meds" rows="5"></textarea><br><br>
+    <label for="phone3" id="label-phone3">Numer alarmowy 3:</label><br>
+    <input type="tel" id="phone3" name="phone3"><br><br>
 
-        <button type="submit">Zapisz</button>
-    </form>
+    <label for="meds" id="label-meds">Lista przyjmowanych leków:</label><br>
+    <textarea id="meds" name="meds" rows="5"></textarea><br><br>
+
+    <button type="submit" id="submit-btn">Zapisz</button>
+  </form>
+
+  <script>
+    const translations = {
+      pl: {
+        title: "CareQR – Formularz danych SOS",
+        labelName: "Imię i nazwisko seniora:",
+        labelPhone1: "Numer alarmowy 1:",
+        labelPhone2: "Numer alarmowy 2:",
+        labelPhone3: "Numer alarmowy 3:",
+        labelMeds: "Lista przyjmowanych leków:",
+        submit: "Zapisz"
+      },
+      de: {
+        title: "CareQR – Notfall-Datenformular",
+        labelName: "Name der betreuten Person:",
+        labelPhone1: "Notfallkontakt 1:",
+        labelPhone2: "Notfallkontakt 2:",
+        labelPhone3: "Notfallkontakt 3:",
+        labelMeds: "Liste der eingenommenen Medikamente:",
+        submit: "Speichern"
+      },
+      en: {
+        title: "CareQR – Emergency Information Form",
+        labelName: "Name of the person:",
+        labelPhone1: "Emergency Contact 1:",
+        labelPhone2: "Emergency Contact 2:",
+        labelPhone3: "Emergency Contact 3:",
+        labelMeds: "List of medications:",
+        submit: "Save"
+      }
+    };
+
+    function setLanguage(lang) {
+      document.getElementById("title").textContent = translations[lang].title;
+      document.getElementById("label-name").textContent = translations[lang].labelName;
+      document.getElementById("label-phone1").textContent = translations[lang].labelPhone1;
+      document.getElementById("label-phone2").textContent = translations[lang].labelPhone2;
+      document.getElementById("label-phone3").textContent = translations[lang].labelPhone3;
+      document.getElementById("label-meds").textContent = translations[lang].labelMeds;
+      document.getElementById("submit-btn").textContent = translations[lang].submit;
+    }
+
+    setLanguage('pl'); // domyślnie polski
+  </script>
 </body>
+</html>
