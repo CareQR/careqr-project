@@ -12,19 +12,27 @@
     }
     .lang-switch {
       text-align: right;
+      margin-bottom: 10px;
     }
     .lang-switch button {
       margin-left: 5px;
       padding: 5px 10px;
+      font-size: 18px;
+      border: none;
+      background: none;
+      cursor: pointer;
+    }
+    .lang-switch button:hover {
+      transform: scale(1.1);
     }
   </style>
 </head>
 <body>
   <div class="lang-switch">
-    <span>Wybierz język / Sprache wählen / Choose language:</span>
-    <button onclick="setLanguage('pl')">PL</button>
-    <button onclick="setLanguage('de')">DE</button>
-    <button onclick="setLanguage('en')">EN</button>
+    🌐 
+    <button onclick="setLanguage('pl')" title="Polski">🇵🇱</button>
+    <button onclick="setLanguage('de')" title="Deutsch">🇩🇪</button>
+    <button onclick="setLanguage('en')" title="English">🇬🇧</button>
   </div>
 
   <h1 id="title">CareQR – Formularz danych SOS</h1>
