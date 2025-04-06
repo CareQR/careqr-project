@@ -2,11 +2,11 @@
 <html lang="pl">
 <head>
   <meta charset="UTF-8">
-  <title>CareQR – Formularz SOS / Notfallformular / Emergency Form</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CareQR – Formularz SOS</title>
   <style>
     body {
-      font-family: 'Arial', sans-serif;
+      font-family: Arial, sans-serif;
       margin: 0;
       padding: 20px;
       background: #f5f7fa;
@@ -75,6 +75,12 @@
     .icon {
       margin-right: 8px;
     }
+
+    .phone-link {
+      color: #4CAF50;
+      font-weight: bold;
+      text-decoration: none;
+    }
   </style>
 </head>
 <body>
@@ -93,13 +99,13 @@
       <input type="text" id="name" name="name" required>
 
       <label for="phone1" id="label-phone1">☎️ Numer alarmowy 1:</label>
-      <input type="tel" id="phone1" name="phone1" required>
-
+      <a href="tel:+48123456789" class="phone-link" id="phone1-link">+48 123 456 789</a>
+      
       <label for="phone2" id="label-phone2">☎️ Numer alarmowy 2:</label>
-      <input type="tel" id="phone2" name="phone2">
+      <a href="tel:+48123456789" class="phone-link" id="phone2-link">+48 123 456 789</a>
 
       <label for="phone3" id="label-phone3">☎️ Numer alarmowy 3:</label>
-      <input type="tel" id="phone3" name="phone3">
+      <a href="tel:+48123456789" class="phone-link" id="phone3-link">+48 123 456 789</a>
 
       <label for="meds" id="label-meds">💊 Lista przyjmowanych leków:</label>
       <textarea id="meds" name="meds" rows="5"></textarea>
