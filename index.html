@@ -3,86 +3,138 @@
 <head>
   <meta charset="UTF-8">
   <title>CareQR – Formularz SOS / Notfallformular / Emergency Form</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body {
-      font-family: Arial, sans-serif;
-      max-width: 600px;
-      margin: 0 auto;
+      font-family: 'Arial', sans-serif;
+      margin: 0;
       padding: 20px;
+      background: #f5f7fa;
+      color: #333;
     }
+
+    .container {
+      max-width: 600px;
+      margin: auto;
+      background: white;
+      padding: 20px;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
     .lang-switch {
-      text-align: right;
-      margin-bottom: 10px;
+      text-align: center;
+      margin-bottom: 20px;
     }
+
     .lang-switch button {
-      margin-left: 5px;
-      padding: 5px 10px;
-      font-size: 18px;
+      font-size: 24px;
       border: none;
       background: none;
       cursor: pointer;
+      margin: 0 5px;
     }
-    .lang-switch button:hover {
-      transform: scale(1.1);
+
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    label {
+      font-weight: bold;
+      display: block;
+      margin-bottom: 5px;
+      margin-top: 15px;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+
+    button[type="submit"] {
+      width: 100%;
+      background-color: #4CAF50;
+      color: white;
+      padding: 12px;
+      font-size: 18px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+
+    button[type="submit"]:hover {
+      background-color: #45a049;
+    }
+
+    .icon {
+      margin-right: 8px;
     }
   </style>
 </head>
 <body>
-  <div class="lang-switch">
-    🌐 
-    <button onclick="setLanguage('pl')" title="Polski">🇵🇱</button>
-    <button onclick="setLanguage('de')" title="Deutsch">🇩🇪</button>
-    <button onclick="setLanguage('en')" title="English">🇬🇧</button>
+  <div class="container">
+    <div class="lang-switch">
+      🌐 
+      <button onclick="setLanguage('pl')" title="Polski">🇵🇱</button>
+      <button onclick="setLanguage('de')" title="Deutsch">🇩🇪</button>
+      <button onclick="setLanguage('en')" title="English">🇬🇧</button>
+    </div>
+
+    <h1 id="title">CareQR – Formularz danych SOS</h1>
+
+    <form>
+      <label for="name" id="label-name">👵 Imię i nazwisko seniora:</label>
+      <input type="text" id="name" name="name" required>
+
+      <label for="phone1" id="label-phone1">☎️ Numer alarmowy 1:</label>
+      <input type="tel" id="phone1" name="phone1" required>
+
+      <label for="phone2" id="label-phone2">☎️ Numer alarmowy 2:</label>
+      <input type="tel" id="phone2" name="phone2">
+
+      <label for="phone3" id="label-phone3">☎️ Numer alarmowy 3:</label>
+      <input type="tel" id="phone3" name="phone3">
+
+      <label for="meds" id="label-meds">💊 Lista przyjmowanych leków:</label>
+      <textarea id="meds" name="meds" rows="5"></textarea>
+
+      <button type="submit" id="submit-btn">Zapisz</button>
+    </form>
   </div>
-
-  <h1 id="title">CareQR – Formularz danych SOS</h1>
-
-  <form>
-    <label for="name" id="label-name">Imię i nazwisko seniora:</label><br>
-    <input type="text" id="name" name="name" required><br><br>
-
-    <label for="phone1" id="label-phone1">Numer alarmowy 1:</label><br>
-    <input type="tel" id="phone1" name="phone1" required><br><br>
-
-    <label for="phone2" id="label-phone2">Numer alarmowy 2:</label><br>
-    <input type="tel" id="phone2" name="phone2"><br><br>
-
-    <label for="phone3" id="label-phone3">Numer alarmowy 3:</label><br>
-    <input type="tel" id="phone3" name="phone3"><br><br>
-
-    <label for="meds" id="label-meds">Lista przyjmowanych leków:</label><br>
-    <textarea id="meds" name="meds" rows="5"></textarea><br><br>
-
-    <button type="submit" id="submit-btn">Zapisz</button>
-  </form>
 
   <script>
     const translations = {
       pl: {
         title: "CareQR – Formularz danych SOS",
-        labelName: "Imię i nazwisko seniora:",
-        labelPhone1: "Numer alarmowy 1:",
-        labelPhone2: "Numer alarmowy 2:",
-        labelPhone3: "Numer alarmowy 3:",
-        labelMeds: "Lista przyjmowanych leków:",
+        labelName: "👵 Imię i nazwisko seniora:",
+        labelPhone1: "☎️ Numer alarmowy 1:",
+        labelPhone2: "☎️ Numer alarmowy 2:",
+        labelPhone3: "☎️ Numer alarmowy 3:",
+        labelMeds: "💊 Lista przyjmowanych leków:",
         submit: "Zapisz"
       },
       de: {
         title: "CareQR – Notfall-Datenformular",
-        labelName: "Name der betreuten Person:",
-        labelPhone1: "Notfallkontakt 1:",
-        labelPhone2: "Notfallkontakt 2:",
-        labelPhone3: "Notfallkontakt 3:",
-        labelMeds: "Liste der eingenommenen Medikamente:",
+        labelName: "👵 Name der betreuten Person:",
+        labelPhone1: "☎️ Notfallkontakt 1:",
+        labelPhone2: "☎️ Notfallkontakt 2:",
+        labelPhone3: "☎️ Notfallkontakt 3:",
+        labelMeds: "💊 Liste der eingenommenen Medikamente:",
         submit: "Speichern"
       },
       en: {
         title: "CareQR – Emergency Information Form",
-        labelName: "Name of the person:",
-        labelPhone1: "Emergency Contact 1:",
-        labelPhone2: "Emergency Contact 2:",
-        labelPhone3: "Emergency Contact 3:",
-        labelMeds: "List of medications:",
+        labelName: "👵 Name of the person:",
+        labelPhone1: "☎️ Emergency Contact 1:",
+        labelPhone2: "☎️ Emergency Contact 2:",
+        labelPhone3: "☎️ Emergency Contact 3:",
+        labelMeds: "💊 List of medications:",
         submit: "Save"
       }
     };
